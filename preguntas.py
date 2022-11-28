@@ -57,7 +57,6 @@ def pregunta_02():
     # Retorne `X_train`, `X_test`, `y_train` y `y_test`
     return x_train, x_test, y_train, y_test
 
-
 def pregunta_03():
     """
     Construcción del pipeline
