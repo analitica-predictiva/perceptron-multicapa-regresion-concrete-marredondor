@@ -94,6 +94,7 @@ def pregunta_04():
 
     # Importe GridSearchCV
     from sklearn.model_selection import GridSearchCV
+    from sklearn.metrics import r2_score
 
     # Cree una malla de búsqueda para el objecto GridSearchCV
     # con los siguientes parámetros de búesqueda:
@@ -106,11 +107,11 @@ def pregunta_04():
     #   * Use parada temprana
 
     param_grid = {
-        'mlpregressor__hidden_layer_sizes': list(range(1,9)),  
-        'mlpregressor__activation': ['relu'],  
-        'mlpregressor__learning_rate': ['adaptive'],  
-        'mlpregressor__momentum': [0.7, 0.8, 0.9],  
-        'mlpregressor__learning_rate_init': [0.01, 0.05, 0.1],  
+        'mlpregressor__hidden_layer_sizes': (1,2,3,4,5,6,7,8,),  
+        'mlpregressor__activation': ["relu"],  
+        'mlpregressor__learning_rate': ["adaptive"],  
+        'mlpregressor__momentum': [0.7,0.8,0.9],  
+        'mlpregressor__learning_rate_init': [0.01,0.05,0.1],  
         'mlpregressor__max_iter': [5000],  
         'mlpregressor__early_stopping': [True],  
     }
@@ -122,14 +123,13 @@ def pregunta_04():
     #  * Validación cruzada con 5 particiones
     #  * Compare modelos usando r^2
     gridsearchcv = GridSearchCV(
-        estimator=estimator,
-        param_grid=param_grid,
-        cv = 5, 
-        scoring = 'r2'
+        estimator = estimator,
+        param_grid = param_grid,
+        cv=5,  
+        scoring= 'r2'  
     )
 
     return gridsearchcv
-
 
 def pregunta_05():
     """
