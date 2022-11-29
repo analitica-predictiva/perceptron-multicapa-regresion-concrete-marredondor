@@ -149,17 +149,17 @@ def pregunta_05():
     estimator.fit(x_train, y_train)  #
 
     # Pronostique para las muestras de entrenamiento y validacion
-    y_train_pred = estimator.predict(x_train)
+    y_trian_pred = estimator.predict(x_train)
     y_test_pred = estimator.predict(x_test)
 
     # Calcule el error cuadrático medio de las muestras
     mse_train = mean_squared_error(  
+        y_trian_pred,  
         y_train,  
-        y_train_pred,  
     )
     mse_test = mean_squared_error(  
-        y_test,  
         y_test_pred,  
+        y_test,  
     )
 
     # Retorne el mse de entrenamiento y prueba
