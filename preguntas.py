@@ -137,7 +137,7 @@ def pregunta_05():
     """
 
     # Importe mean_squared_error
-    from sklearn.metrics import mean_squared_error as mse
+    from sklearn.metrics import mean_squared_error
 
     # Cargue las variables.
     x_train, x_test, y_train, y_test = pregunta_02()
@@ -148,21 +148,19 @@ def pregunta_05():
     # Entrene el estimador
     estimator.fit(x_train, y_train)  #
 
-     # Pronostique para las muestras de entrenamiento y validacion
-    y_trian_pred = estimator.predict(x_train) 
-    y_test_pred = estimator.predict(x_test)  
+    # Pronostique para las muestras de entrenamiento y validacion
+    y_train_pred = estimator.predict(x_train)
+    y_test_pred = estimator.predict(x_test)
 
     # Calcule el error cuadrático medio de las muestras
-    mse_train = mse(  
-        y_trian_pred,  
+    mse_train = mean_squared_error(  
         y_train,  
+        y_train_pred,  
     )
-    mse_test = mse(  
-        y_test_pred,  
+    mse_test = mean_squared_error(  
         y_test,  
+        y_test_pred,  
     )
-
 
     # Retorne el mse de entrenamiento y prueba
     return mse_train, mse_test
-
